@@ -1,4 +1,4 @@
-﻿namespace FunkoApi.Models
+﻿namespace FunkoApi.Entities
 {
     public class Figure
     {
@@ -6,7 +6,7 @@
         public string Handle { get; set; }
         public string Title { get; set; }
         public string ImageName { get; set; }
-        public string Series {  get; set; }
+        public string Series { get; set; }
 
         public Figure(string Id, string Handle, string Title, string ImageName, string Series)
         {

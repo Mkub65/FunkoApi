@@ -1,9 +1,10 @@
+using FunkoApi.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FunkoApi.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/Figures")]
     public class FiguresController : ControllerBase
     {
         private readonly ILogger<FiguresController> _logger;
@@ -15,9 +16,9 @@ namespace FunkoApi.Controllers
 
         [HttpGet]
         [Route("GetFigureById/{id}")]
-        public IEnumerable<WeatherForecast> Get(string Id)
+        public IEnumerable<Role> Get(string Id)
         {
-            return (IEnumerable<WeatherForecast>)NotFound();
+            return (IEnumerable<Role>)NotFound();
         }
     }
 }

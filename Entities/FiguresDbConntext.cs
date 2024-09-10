@@ -1,5 +1,4 @@
-﻿using FunkoApi.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FunkoApi.Entities
 {
@@ -7,7 +6,7 @@ namespace FunkoApi.Entities
     {
         public class RestaurantDbContext : DbContext
         {
-            private string _connectionString = "Server=localhost;Database=;Trusted_Connection=True;";
+            private string _connectionString = "Server=localhost;Database=FiguresDb;Trusted_Connection=True;";
             public DbSet<Figure> Figures { get; set; }
             public DbSet<User> Users { get; set; }
             public DbSet<Role> Roles { get; set; }
