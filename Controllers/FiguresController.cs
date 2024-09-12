@@ -1,5 +1,7 @@
 using FunkoApi.Entities;
 using Microsoft.AspNetCore.Mvc;
+using static FunkoApi.Services.AccountService;
+using static FunkoApi.Services.FiguresService;
 
 namespace FunkoApi.Controllers
 {
@@ -7,18 +9,19 @@ namespace FunkoApi.Controllers
     [Route("api/Figures")]
     public class FiguresController : ControllerBase
     {
-        private readonly ILogger<FiguresController> _logger;
+        private readonly IFiguresService _figuresService;
 
-        public FiguresController(ILogger<FiguresController> logger)
+        public FiguresController(IFiguresService figuresService)
         {
-            _logger = logger;
+            _figuresService = figuresService;
         }
 
         [HttpGet]
-        [Route("GetFigureById/{id}")]
-        public IEnumerable<Role> Get(string Id)
+        [Route("GetFigureById/{Id}")]
+        public Figure Get(string Id)
         {
-            return (IEnumerable<Role>)NotFound();
+            var figure = _figuresService.GetById(Id);
+            return figure;
         }
     }
 }

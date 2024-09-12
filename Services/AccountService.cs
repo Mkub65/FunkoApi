@@ -20,11 +20,11 @@ namespace FunkoApi.Services
         }
         public class AccountServices : IAccountServices
         {
-            private readonly RestaurantDbContext _context;
+            private readonly FigurestDbContext _context;
             private readonly IPasswordHasher<User> _passwordHasher;
             private readonly AuthenticationSettings _authenticationSettings;
 
-            public AccountServices(RestaurantDbContext context, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings)
+            public AccountServices(FigurestDbContext context, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings)
             {
                 _context = context;
                 _passwordHasher = passwordHasher;

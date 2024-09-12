@@ -4,9 +4,9 @@ namespace FunkoApi.Entities
 {
     public class FiguresDbConntext
     {
-        public class RestaurantDbContext : DbContext
+        public class FigurestDbContext : DbContext
         {
-            private string _connectionString = "Server=localhost;Database=FiguresDb;Trusted_Connection=True;";
+            private string _connectionString = "Server=localhost;Database=FiguresDb;Trusted_Connection=True;TrustServerCertificate=True";
             public DbSet<Figure> Figures { get; set; }
             public DbSet<User> Users { get; set; }
             public DbSet<Role> Roles { get; set; }
@@ -19,7 +19,9 @@ namespace FunkoApi.Entities
                 modelBuilder.Entity<Role>()
                     .Property(u => u.Name)
                     .IsRequired();
-                modelBuilder.Entity<Figure>();
+                modelBuilder.Entity<Figure>()
+                    .Property(f => f.Handle)
+                    .IsRequired();
             }
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {

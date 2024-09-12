@@ -10,6 +10,8 @@ using FunkoApi.Models.Validators;
 using static FunkoApi.Entities.FiguresDbConntext;
 using NLog.Web;
 using static FunkoApi.Services.AccountService;
+using static FunkoApi.Services.FiguresService;
+using FunkoApi.Services;
 
 namespace FunkoApi
 {
@@ -40,9 +42,10 @@ namespace FunkoApi
             });
             builder.Services.AddSingleton(authenticationSettings);
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<RestaurantDbContext>();
+            builder.Services.AddDbContext<FigurestDbContext>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<IAccountServices, AccountServices>();
+            builder.Services.AddScoped<IFiguresService, FiguresServices>();
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();

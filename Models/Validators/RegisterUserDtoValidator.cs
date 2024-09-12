@@ -5,7 +5,7 @@ namespace FunkoApi.Models.Validators
 {
     public class RegisterUserDtoValidator : AbstractValidator<RegisterUserDto>
     {
-        public RegisterUserDtoValidator(RestaurantDbContext dbContext)
+        public RegisterUserDtoValidator(FigurestDbContext dbContext)
         {
             RuleFor(x => x.Email)
                 .NotEmpty()
