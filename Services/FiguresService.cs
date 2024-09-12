@@ -9,6 +9,8 @@ namespace FunkoApi.Services
         public interface IFiguresService
         {
             public Figure GetById(string id);
+            public void AddNewFigure(Figure figure);
+            public void DeleteFigure(string Id);
         }
 
         public class FiguresServices : IFiguresService 
@@ -30,6 +32,26 @@ namespace FunkoApi.Services
                 }
 
                 return figure;
+            }
+
+            public void AddNewFigure(Figure figure)
+            {
+                _context.Figures.Add(figure);
+                _context.SaveChanges();
+            }
+
+            public void DeleteFigure(string Id)
+            {
+                var figure = _context.Figures.FirstOrDefault(f => f.Equals(Id));
+                if (figure != null)
+                {
+                    throw new NotFoundException("Figure not found");
+                }
+                else
+                {
+                    _context.Figures.Remove(figure);
+                }
+                _context.SaveChanges();
             }
 
             private Figure GetFigureById(int id)

@@ -1,6 +1,5 @@
 using FunkoApi.Entities;
 using Microsoft.AspNetCore.Mvc;
-using static FunkoApi.Services.AccountService;
 using static FunkoApi.Services.FiguresService;
 
 namespace FunkoApi.Controllers
@@ -18,10 +17,26 @@ namespace FunkoApi.Controllers
 
         [HttpGet]
         [Route("GetFigureById/{Id}")]
-        public Figure Get(string Id)
+        public Figure GetById(string Id)
         {
             var figure = _figuresService.GetById(Id);
             return figure;
+        }
+
+        [HttpPost]
+        [Route("AddFigure")]
+        public ActionResult AddNewFigure([FromBody] Figure figure)
+        {
+            _figuresService.AddNewFigure(figure);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("Delete/{Id}")]
+        public ActionResult DeleteFigure(string Id)
+        {
+            _figuresService.DeleteFigure(Id);
+            return Ok();
         }
     }
 }
