@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FunkoApi.Entities;
+using FunkoApi.Models;
 
 namespace FunkoApi
 {
@@ -8,6 +9,7 @@ namespace FunkoApi
         public FigureMappingProfile()
         {
             CreateMap<Figure, FigureDto>();
+            CreateMap<RegisterFigureDto, Figure>();
         }
     }
 }

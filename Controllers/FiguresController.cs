@@ -1,4 +1,5 @@
 using FunkoApi.Entities;
+using FunkoApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using static FunkoApi.Services.FiguresService;
 
@@ -28,6 +29,21 @@ namespace FunkoApi.Controllers
         public ActionResult AddNewFigure([FromBody] Figure figure)
         {
             _figuresService.AddNewFigure(figure);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("EditFigure")]
+        public ActionResult EditFigure([FromBody] Figure figure)
+        {
+            _figuresService.EditFigure(figure);
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("RegisterFigureForUser")]
+        public ActionResult RegisterFigureForUser([FromBody] RegisterFigureDto figure)
+        {
             return Ok();
         }
 
